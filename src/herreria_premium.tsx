@@ -104,7 +104,7 @@ const SectionHeading = ({ subtitle, title, centered = true }: SectionHeadingProp
 const ButtonPrimary = ({ children, className = '', onClick }: ButtonProps) => (
   <button
     onClick={onClick}
-    className={`bg-[#FF6B00] hover:bg-[#e56000] text-white font-inter font-semibold py-4 px-8 rounded-sm transition-all duration-300 flex items-center justify-center gap-2 group shadow-[0_0_20px_rgba(255,107,0,0.3)] hover:shadow-[0_0_30px_rgba(255,107,0,0.5)] ${className}`}
+    className={`bg-[#FF6B00] hover:bg-[#e56000] text-white font-inter font-semibold py-4 px-8 rounded-sm transition-all duration-300 flex items-center justify-center gap-2 group shadow-[0_0_20px_rgba(255,107,0,0.3)] hover:shadow-[0_0_30px_rgba(255,107,0,0.5)] min-h-[48px] ${className}`}
   >
     {children}
     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -230,18 +230,18 @@ const Hero = () => {
           <span className="inline-block py-1 px-3 border border-[#FF6B00]/30 bg-black/40 backdrop-blur-sm text-[#FF6B00] font-inter text-sm font-medium tracking-wide rounded-full mb-6 gsap-hero-item">
             BUSH AND CRAFT — HERRERÍA PREMIUM
           </span>
-          <h1 className="font-bebas text-6xl md:text-8xl lg:text-[10rem] text-white leading-[0.9] mb-8 tracking-wide gsap-hero-item drop-shadow-2xl">
+          <h1 className="font-bebas text-5xl sm:text-6xl md:text-8xl lg:text-[10rem] text-white leading-[0.9] mb-6 md:mb-8 tracking-wide gsap-hero-item drop-shadow-2xl">
             FORJAMOS EL <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#ff984d]">FUTURO.</span>
           </h1>
-          <p className="font-inter text-lg md:text-xl text-gray-300 mb-10 max-w-2xl font-light leading-relaxed gsap-hero-item">
+          <p className="font-inter text-base md:text-lg lg:text-xl text-gray-300 mb-8 md:mb-10 max-w-2xl font-light leading-relaxed gsap-hero-item">
             Diseño industrial moderno, fabricación a medida y calidad incomparable para proyectos exigentes. Más de 15 años transformando ideas en realidades.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 gsap-hero-item">
-            <a href={WHATSAPP_URL.replace('%20sobre', '')} target="_blank" rel="noopener noreferrer">
-              <ButtonPrimary>Solicitar Presupuesto</ButtonPrimary>
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 gsap-hero-item">
+            <a href={WHATSAPP_URL.replace('%20sobre', '')} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+              <ButtonPrimary className="w-full sm:w-auto">Solicitar Presupuesto</ButtonPrimary>
             </a>
-            <a href="#galeria" className="inline-flex">
-              <ButtonSecondary>Ver Trabajos</ButtonSecondary>
+            <a href="#galeria" className="inline-flex w-full sm:w-auto">
+              <ButtonSecondary className="w-full sm:w-auto">Ver Trabajos</ButtonSecondary>
             </a>
           </div>
         </div>
@@ -255,11 +255,11 @@ const InfiniteMarquee = () => {
   return (
     <div className="w-full bg-white/5 backdrop-blur-md border-y border-white/10 py-4 overflow-hidden relative z-20 shadow-xl">
       <div className="flex whitespace-nowrap animate-marquee">
-        {[...Array(3)].map((_, i) => (
+        {[...Array(2)].map((_, i) => (
           <div key={i} className="flex items-center">
             {texts.map((text, j) => (
               <Fragment key={j}>
-                <span className="text-white/80 font-bebas text-2xl tracking-widest mx-8 hover:text-white transition-colors cursor-default">{text}</span>
+                <span className="text-white/80 font-bebas text-lg md:text-2xl tracking-widest mx-4 md:mx-8 hover:text-white transition-colors cursor-default">{text}</span>
                 <span className="text-[#FF6B00]">•</span>
               </Fragment>
             ))}
@@ -272,7 +272,7 @@ const InfiniteMarquee = () => {
 
 const ServicesSection = () => {
   return (
-    <section id="servicios" className="py-24 md:py-32 relative bg-transparent z-10">
+    <section id="servicios" className="py-16 md:py-32 relative bg-transparent z-10">
       <div className="container mx-auto px-6 max-w-7xl">
         <SectionHeading subtitle="Nuestra Especialidad" title="SOLUCIONES METÁLICAS INTEGRALES" />
 
@@ -280,7 +280,7 @@ const ServicesSection = () => {
           {SERVICES.map((service) => (
             <div
               key={service.id}
-              className="group p-8 bg-white/[0.03] backdrop-blur-xl border border-white/10 hover:border-[#FF6B00]/50 hover:bg-white/[0.08] transition-all duration-500 rounded-sm hover:-translate-y-2 gsap-stagger-item shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] relative overflow-hidden"
+              className="group p-6 md:p-8 bg-white/[0.03] backdrop-blur-xl border border-white/10 hover:border-[#FF6B00]/50 hover:bg-white/[0.08] transition-all duration-500 rounded-sm hover:-translate-y-2 gsap-stagger-item shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#FF6B00]/10 rounded-full blur-3xl -translate-y-full translate-x-full group-hover:translate-y-0 group-hover:-translate-x-0 transition-transform duration-700 pointer-events-none" />
 
@@ -352,7 +352,7 @@ const BestWorksSection = () => {
         <span className="text-[#FF6B00] font-inter font-bold tracking-[0.2em] uppercase text-sm md:text-base block mb-4 drop-shadow-md bg-black/30 inline-block px-4 py-1 rounded-full backdrop-blur-md">
           Selección Exclusiva
         </span>
-        <h2 className="font-bebas text-6xl md:text-8xl lg:text-[7rem] text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)] leading-none">
+        <h2 className="font-bebas text-5xl md:text-8xl lg:text-[7rem] text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)] leading-none">
           LOS MEJORES TRABAJOS
         </h2>
       </div>
@@ -385,7 +385,7 @@ const InfiniteImageGallery = () => {
     "/galeria/muebles-cocina.jpg",
     "/galeria/parrilas-y-fogoneros.webp",
   ]
-  const duplicated = [...images, ...images, ...images]
+  const duplicated = [...images, ...images]
 
   return (
     <section className="py-12 md:py-16 bg-[#0A0A0A] overflow-hidden relative z-10 border-b border-white/5">
@@ -425,12 +425,12 @@ const AboutUsSection = () => {
   }, [])
 
   return (
-    <section id="sobre-nosotros" className="py-24 md:py-32 relative z-10 bg-transparent border-t border-white/5">
+    <section id="sobre-nosotros" className="py-16 md:py-32 relative z-10 bg-transparent border-t border-white/5">
       <div className="container mx-auto px-6 max-w-5xl">
         <div className="gsap-fade-up">
           <SectionHeading subtitle="Conócenos" title="SOBRE NOSOTROS" centered={false} />
 
-          <div className="relative w-full aspect-[4/3] md:aspect-[21/9] mb-20 mt-10">
+          <div className="relative w-full aspect-[4/3] md:aspect-[21/9] mb-12 md:mb-20 mt-6 md:mt-10">
             <div className="absolute top-0 left-0 w-[85%] md:w-[75%] h-[85%] border-[3px] border-[#FF6B00] rounded-sm overflow-hidden z-10 shadow-2xl">
               <img
                 src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=1200&auto=format&fit=crop"
@@ -515,7 +515,7 @@ const GallerySection = () => {
     : GALLERY_ITEMS.filter(item => item.category === activeFilter)
 
   return (
-    <section id="galeria" className="py-24 bg-transparent border-t border-white/5 relative overflow-hidden z-10">
+    <section id="galeria" className="py-16 md:py-24 bg-transparent border-t border-white/5 relative overflow-hidden z-10">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 gsap-fade-up">
           <div className="text-left">
@@ -555,7 +555,7 @@ const GallerySection = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
 
-              <div className="absolute bottom-0 left-0 w-full p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+              <div className="absolute bottom-0 left-0 w-full p-6 md:p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                 <span className="text-[#FF6B00] font-inter text-xs font-bold uppercase tracking-wider mb-2 block">
                   {item.category}
                 </span>
@@ -631,7 +631,7 @@ const ProcessTimeline = () => {
   }, [])
 
   return (
-    <section id="proceso" className="py-24 md:py-32 bg-transparent relative z-10 border-t border-white/5" ref={containerRef}>
+    <section id="proceso" className="py-16 md:py-32 bg-transparent relative z-10 border-t border-white/5" ref={containerRef}>
       <div className="container mx-auto px-6 max-w-4xl">
         <SectionHeading subtitle="Metodología" title="NUESTRO PROCESO" centered />
 
@@ -669,8 +669,8 @@ const TestimonialsCarousel = () => {
   const duplicatedTestimonials = [...TESTIMONIALS, ...TESTIMONIALS]
 
   return (
-    <section className="py-24 md:py-32 bg-transparent border-t border-white/5 relative overflow-hidden z-10">
-      <div className="container mx-auto px-6 max-w-7xl mb-12 md:mb-20">
+    <section className="py-16 md:py-32 bg-transparent border-t border-white/5 relative overflow-hidden z-10">
+      <div className="container mx-auto px-6 max-w-7xl mb-8 md:mb-20">
         <SectionHeading subtitle="Testimonios" title="CLIENTES SATISFECHOS" centered />
       </div>
 
@@ -682,7 +682,7 @@ const TestimonialsCarousel = () => {
           {duplicatedTestimonials.map((testimonial, i) => (
             <div
               key={i}
-              className="w-[320px] md:w-[450px] shrink-0 bg-[#111]/80 backdrop-blur-sm border border-white/10 p-8 rounded-sm hover:border-[#FF6B00]/40 transition-all duration-300 shadow-lg hover:-translate-y-1"
+              className="w-[300px] md:w-[450px] shrink-0 bg-[#111]/80 backdrop-blur-sm border border-white/10 p-6 md:p-8 rounded-sm hover:border-[#FF6B00]/40 transition-all duration-300 shadow-lg hover:-translate-y-1"
             >
               <div className="flex gap-1 mb-6">
                 {[...Array(testimonial.stars)].map((_, j) => (
@@ -726,7 +726,7 @@ const CTASection = () => {
   }, [])
 
   return (
-  <section className="relative w-full min-h-[80vh] flex items-center overflow-hidden z-10 border-t border-white/5">
+  <section className="relative w-full min-h-[70vh] md:min-h-[80vh] flex items-center overflow-hidden z-10 border-t border-white/5">
     <div className="absolute inset-0 z-0">
       <video
         ref={ctaVideoRef}
@@ -745,17 +745,17 @@ const CTASection = () => {
 
     <div className="container mx-auto px-6 max-w-6xl text-center relative z-10 gsap-fade-up">
       <div className="max-w-3xl mx-auto">
-        <h2 className="font-bebas text-5xl md:text-7xl lg:text-8xl text-white leading-none mb-6 drop-shadow-2xl">
+        <h2 className="font-bebas text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-white leading-none mb-4 md:mb-6 drop-shadow-2xl">
           ¿LISTO PARA INICIAR TU PROYECTO?
         </h2>
-        <p className="font-inter text-xl text-gray-300 font-light mb-10 drop-shadow-lg">
+        <p className="font-inter text-base md:text-lg lg:text-xl text-gray-300 font-light mb-8 md:mb-10 drop-shadow-lg">
           Contáctanos hoy para recibir asesoramiento personalizado y un presupuesto sin cargo.
         </p>
         <a
           href={WHATSAPP_URL.replace('%20sobre', '')}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-3 bg-[#FF6B00] hover:bg-[#e56000] text-white font-inter font-semibold py-4 px-10 rounded-sm transition-all duration-300 shadow-[0_0_20px_rgba(255,107,0,0.3)] hover:shadow-[0_0_30px_rgba(255,107,0,0.5)]"
+          className="inline-flex items-center gap-3 bg-[#FF6B00] hover:bg-[#e56000] text-white font-inter font-semibold py-4 px-8 md:px-10 rounded-sm transition-all duration-300 shadow-[0_0_20px_rgba(255,107,0,0.3)] hover:shadow-[0_0_30px_rgba(255,107,0,0.5)]"
         >
           <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
             <path d="M20 2H4C2.9 2 2 2.9 2 4v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z" fill="currentColor" />
@@ -768,12 +768,12 @@ const CTASection = () => {
 )}
 
 const LocationSection = () => (
-  <section className="py-24 bg-transparent border-t border-white/5 relative z-10">
+  <section className="py-16 md:py-24 bg-transparent border-t border-white/5 relative z-10">
     <div className="container mx-auto px-6 max-w-7xl">
       <SectionHeading subtitle="Encuéntranos" title="NUESTRA UBICACIÓN" centered={false} />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mt-12">
-        <div className="lg:col-span-8 w-full h-[400px] md:h-[500px] bg-[#111] rounded-sm border border-white/10 overflow-hidden relative shadow-2xl">
+        <div className="lg:col-span-8 w-full h-[250px] sm:h-[350px] md:h-[500px] bg-[#111] rounded-sm border border-white/10 overflow-hidden relative shadow-2xl">
           <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_40px_rgba(10,10,10,0.8)] z-10 mix-blend-overlay" />
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105073.44367005218!2d-58.50314414006151!3d-34.61566245228189!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccac1a26d2551%3A0x6b132207b539c3e4!2sBuenos%20Aires%2C%20CABA!5e0!3m2!1ses-419!2sar!4v1700000000000!5m2!1ses-419!2sar"
@@ -854,7 +854,7 @@ const WhatsAppFloat = () => (
 const Footer = () => (
   <footer id="contacto" className="bg-[#0A0A0A] pt-20 pb-10 border-t border-white/10 relative z-10">
     <div className="container mx-auto px-6 max-w-7xl">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-12 md:mb-16">
         <div className="lg:col-span-1">
           <div className="flex items-center gap-2 mb-6">
             <img src="/logopara-lacabeceraa.png" alt="Bush and Craft" className="h-10 w-auto" />
