@@ -912,7 +912,7 @@ export default function App() {
     })
 
     tl.fromTo(intro,
-      { scale: 2.2 },
+      { scale: 1.4 },
       { scale: 1, duration: 3, ease: 'power2.out' },
     )
       .to(intro, { opacity: 0, duration: 0.6, ease: 'power2.in' }, '-=0.3')
@@ -963,7 +963,7 @@ export default function App() {
             ref={introRef}
             src="/cinematicreveval-logo-y-fondo-full.width.png"
             alt="Bush and Craft"
-            className="w-full h-full object-cover object-center will-change-transform md:object-[center_30%]"
+            className="w-full h-full object-cover object-center will-change-transform"
           />
 
           <div className="absolute bottom-12 md:bottom-16 left-1/2 -translate-x-1/2 w-[200px] md:w-[300px]">
