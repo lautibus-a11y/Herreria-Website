@@ -177,6 +177,14 @@ const Hero = () => {
     const video = cinematicRef.current
     if (!video) return
 
+    const play = () => {
+      video.play().catch(() => {
+        setTimeout(play, 500)
+      })
+    }
+    video.addEventListener('canplay', play, { once: true })
+    play()
+
     const ctx = gsap.context(() => {
       gsap.fromTo(video,
         { scale: 1.4, opacity: 0 },
@@ -192,7 +200,10 @@ const Hero = () => {
       })
     })
 
-    return () => ctx.revert()
+    return () => {
+      ctx.revert()
+      video.removeEventListener('canplay', play)
+    }
   }, [])
 
   return (
@@ -204,6 +215,7 @@ const Hero = () => {
           muted
           loop
           playsInline
+          preload="auto"
           className="w-full h-full object-cover will-change-transform"
         >
           <source src="/hero/videohero1.mp4" type="video/mp4" />
@@ -699,14 +711,30 @@ const TestimonialsCarousel = () => {
   )
 }
 
-const CTASection = () => (
+const CTASection = () => {
+  const ctaVideoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const video = ctaVideoRef.current
+    if (!video) return
+    const play = () => {
+      video.play().catch(() => setTimeout(play, 500))
+    }
+    video.addEventListener('canplay', play, { once: true })
+    play()
+    return () => video.removeEventListener('canplay', play)
+  }, [])
+
+  return (
   <section className="relative w-full min-h-[80vh] flex items-center overflow-hidden z-10 border-t border-white/5">
     <div className="absolute inset-0 z-0">
       <video
+        ref={ctaVideoRef}
         autoPlay
         muted
         loop
         playsInline
+        preload="auto"
         className="w-full h-full object-cover opacity-50"
       >
         <source src="/cta/videoctl.mp4" type="video/mp4" />
@@ -737,7 +765,7 @@ const CTASection = () => (
       </div>
     </div>
   </section>
-)
+)}
 
 const LocationSection = () => (
   <section className="py-24 bg-transparent border-t border-white/5 relative z-10">
